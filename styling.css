@@ -1,12 +1,19 @@
 html {
     background-color: black;
+    color: white;
 }
-
 
 h1 {
-    color: white;
+    text-align: center;
+    font-size: 70px;
 }
 
-#weatherNow {
-    color: white;
+#temperature {
+    text-align: center;
+    font-size: 36px;
+}
+
+#description {
+    text-align: center;
+    font-size: 24px;
 }

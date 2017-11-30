@@ -1,7 +1,6 @@
 $(document).ready(function(){
     
 
-    var description;
     
     //How many times is JSON retrieved?
     var retrieveNumber = 0;
@@ -9,14 +8,17 @@ $(document).ready(function(){
     /*Retrieve weather info from OpenWeatherMap. 
       Replace ********************* with your own API key. */
     
+    var description;
+    var temperature;
     function getWeatherJSON() {
         retrieveNumber++;
 
-        $.getJSON("http://api.openweathermap.org/data/2.5/forecast?id=660158&APPID=***********************", function(weatherData){
-            description = "Weather: "+ weatherData.list[0].weather[0].description + " Temperature: " + Math.round(weatherData.list[0].main.temp - 273.15) + " Celsius";
+            temperature = Math.round(weatherData.list[0].main.temp - 273.15);
+            description = weatherData.list[0].weather[0].description;
         });
    
         console.log("Current weather data retrieved, this was attempt number: " + retrieveNumber);
+        console.log(description);
         enterData();
             
     }
@@ -24,8 +26,8 @@ $(document).ready(function(){
 
     //Insert weather data to html
     function enterData() {
-        document.getElementById("weatherNow").innerHTML = description;
-
+        document.getElementById("temperature").innerHTML = temperature + " °C";
+        document.getElementById("description").innerHTML = description;
     }
 
     //Start everything and update every 10 seconds
