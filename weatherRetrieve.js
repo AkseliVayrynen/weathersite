@@ -10,15 +10,17 @@ $(document).ready(function(){
     
     var description;
     var temperature;
+    
     function getWeatherJSON() {
         retrieveNumber++;
-
+        
+        $.getJSON("http://api.openweathermap.org/data/2.5/forecast?id=**********************", function(weatherData) {
             temperature = Math.round(weatherData.list[0].main.temp - 273.15);
             description = weatherData.list[0].weather[0].description;
         });
-   
+    
+
         console.log("Current weather data retrieved, this was attempt number: " + retrieveNumber);
-        console.log(description);
         enterData();
             
     }
